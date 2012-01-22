@@ -30,11 +30,9 @@ $result->output('console');
 ## Testing Result
 
 
-    -SimpleBench (master) % php profiling/array-push.php 
-
-    n=300000
+        -SimpleBench (master) % php profiling/array-push.php 
     
                          Rate     Mem   array[]   array_push
-       array[]            4/s     44M        --         -28%
-    array_push            1/s     45M      355%           --
+       array[]           1M/s     44M        --         -29%
+    array_push         381K/s     45M      341%           --
     
