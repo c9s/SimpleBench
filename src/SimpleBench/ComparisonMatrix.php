@@ -41,10 +41,15 @@ class ComparisonMatrix
 
             foreach( $names as $name2 ) {
                 $task2 = $this->tasks[ $name2 ];
+#                  $percent = 
+#                      $task2->duration < $task->duration 
+#                      ? - intval($task2->duration / $task->duration * 100)
+#                      : intval($task2->duration / $task->duration * 100 );
+
                 $percent = 
-                    $task2->duration < $task->duration 
-                    ? - intval($task2->duration / $task->duration * 100)
-                    : intval($task2->duration / $task->duration * 100 );
+                    $task2->duration > $task->duration 
+                    ? -intval($task->duration / $task2->duration * 100)
+                    : intval($task->duration / $task2->duration * 100);
 
                 if( $name1 != $name2 ) {
                     $matrix[$name1][$name2] = $percent;

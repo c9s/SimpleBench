@@ -58,8 +58,9 @@ class SimpleBench
         $task = $this->tasks[ $taskname ];
         $task->end();
 
-        if( $this->optionGc )
+        if( $this->optionGc ) {
             gc_collect_cycles();
+        }
         return $task;
     }
 
