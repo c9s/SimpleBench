@@ -1,7 +1,7 @@
 SimpleBench
 ===========
 
-SimpleBench provides a suckless benchmark utilities for benchmarking.
+SimpleBench provides suckless benchmarking tools.
 
 ## API
 
