@@ -25,7 +25,7 @@ class Task
     {
         $this->end = microtime( true );
         $this->duration = $this->getDuration();
-        $this->rate = $this->duration / $this->count;
+        $this->rate = $this->count / $this->duration;
     }
 
     public function getDuration() 

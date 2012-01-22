@@ -18,9 +18,13 @@ class SimpleBenchTest extends PHPUnit_Framework_TestCase
         ok( $task2 );
 
 
-        $result = $bench->compare($task1,$task2);
+        $task3 = $bench->start('task3');
+        $task3->setCount(300); // 300 requests
+        usleep(600);
+        $bench->end('task3');
+        ok( $task3 );
 
-
+        $result = $bench->compare($task1,$task2,$task3);
         
     }
 }

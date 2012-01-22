@@ -53,7 +53,7 @@ class SimpleBench
     public function compare()
     {
         $tasks = func_get_args();
-        $comparison = new SimpleBench\ComparisonSet( $tasks );
+        $comparison = new SimpleBench\ComparisonMatrix( $tasks );
         $results = $comparison->compare();
 
     }
