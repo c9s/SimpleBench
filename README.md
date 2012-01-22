@@ -29,9 +29,12 @@ $result->output('console');
 
 ## Testing Result
 
-                     Rate     Mem     task1     task2     task3
-     task1           1M/s    272M        --      -60%      -34%
-     task2         697K/s    272M      166%        --      -56%
-     task3         394K/s    272M      293%      176%        --
 
+    -SimpleBench (master) % php profiling/array-push.php 
 
+    n=300000
+    
+                         Rate     Mem   array[]   array_push
+       array[]            4/s     44M        --         -28%
+    array_push            1/s     45M      355%           --
+    

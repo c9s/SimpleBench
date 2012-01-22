@@ -72,6 +72,9 @@ class SimpleBench
     public function compare()
     {
         $tasks = func_get_args();
+        if( empty($tasks) )
+            $tasks = array_values($this->tasks);
+
         $comparison = new SimpleBench\ComparisonMatrix( $tasks );
         $comparison->compare();
         return $comparison;

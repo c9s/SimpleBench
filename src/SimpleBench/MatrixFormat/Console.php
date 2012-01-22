@@ -18,6 +18,12 @@ class Console
         /* matrix console printer */
         $names = $this->ordering;
 
+
+        $columnLength = array();
+        foreach( $names as $n ) {
+            $columnLength[ $n ] = strlen( $n ) + 3;
+        }
+
         // print column labels
         printf( "\n" );
         printf( "% 10s" , "" ); // for label names
@@ -26,7 +32,7 @@ class Console
 
         foreach( $names as $name1 ) {
             $task1 = $this->tasks[ $name1 ];
-            printf( "% 10s" , $name1 );
+            printf( "% ".$columnLength[$name1]."s" , $name1 );
         }
         printf("\n");
 
@@ -47,19 +53,30 @@ class Console
             }
 
 
-            printf("% 8s", ( $task1->endMem - $task1->startMem ) . 'M');
+            if( $task1->mem > 1000000 ) {
+                printf("% 8s", (int)( $task1->mem / 1000000 ) . 'M');
+            }
+            elseif( $task1->mem > 1000 ) {
+                printf("% 8s", (int)( $task1->mem / 1000 ) . 'K');
+            }
+            else {
+                printf("% 8s", (int)( $task1->mem ) . 'B');
+            }
+
             foreach( $names as $name2 ) {
+                $w = $columnLength[$name2];
+
                 $percent = $this->matrix[ $name1 ][ $name2 ];
                 if( $percent != '--' ) {
-                        printf("% 10s", $percent . '%');
+                        printf("% {$w}s", $percent . '%');
                 } else {
-                    printf("% 10s",$percent);
+                    printf("% {$w}s",$percent);
                 }
             }
             printf("\n");
         }
-    }
 
+    }
 
 }
 

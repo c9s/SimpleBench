@@ -22,7 +22,7 @@ class Task
     public function start()
     {
         $this->start = microtime( true );
-        $this->startMem = memory_get_usage();
+        $this->startMem = memory_get_usage(true);
     }
 
     public function end()
@@ -30,7 +30,8 @@ class Task
         $this->end = microtime( true );
         $this->duration = $this->getDuration();
         $this->rate = $this->count / $this->duration;
-        $this->endMem = memory_get_usage();
+        $this->endMem = memory_get_usage(true);
+        $this->mem = $this->endMem - $this->startMem;
     }
 
     public function getDuration() 
@@ -43,7 +44,7 @@ class Task
         echo "Task: {$this->name} \n";
         echo "=> Duration: " . ($this->duration) . " sec.\n";
         echo "=> Rate: " . $this->rate . "/s.\n";
-        echo "=> Memory: " . $this->endMem - $this->startMem . "M.\n";
+        echo "=> Memory: " . $this->mem . "B.\n";
     }
 
     public function setCount($count)
@@ -58,7 +59,7 @@ class Task
             'count' => $this->count,
             'rate' => $this->rate,
             'duration' => $this->duration,
-            'memory' => $this->endMem - $this->startMem,
+            'memory' => $this->mem,
         );
     }
 
