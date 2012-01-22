@@ -35,6 +35,7 @@ class SimpleBench
         }
         $this->tasks[ $taskname ] = $task;
         $task->start();
+        return $task;
     }
 
     public function end($taskname = 'default')
@@ -52,7 +53,8 @@ class SimpleBench
     public function compare()
     {
         $tasks = func_get_args();
-
+        $comparison = new SimpleBench\ComparisonSet( $tasks );
+        $results = $comparison->compare();
 
     }
 
