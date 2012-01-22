@@ -48,8 +48,6 @@ class Console
 
 
             printf("% 8s", ( $task1->endMem - $task1->startMem ) . 'M');
-
-
             foreach( $names as $name2 ) {
                 $percent = $this->matrix[ $name1 ][ $name2 ];
                 if( $percent != '--' ) {

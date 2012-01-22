@@ -42,12 +42,24 @@ class Task
     {
         echo "Task: {$this->name} \n";
         echo "=> Duration: " . ($this->duration) . " sec.\n";
-        echo "=> Rate: " . $this->rate . " per sec.\n";
+        echo "=> Rate: " . $this->rate . "/s.\n";
+        echo "=> Memory: " . $this->endMem - $this->startMem . "M.\n";
     }
 
     public function setCount($count)
     {
         $this->count = $count;
+    }
+
+    public function getData()
+    {
+        return array(
+            'name' => $this->name,
+            'count' => $this->count,
+            'rate' => $this->rate,
+            'duration' => $this->duration,
+            'memory' => $this->endMem - $this->startMem,
+        );
     }
 
 }
