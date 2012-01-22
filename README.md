@@ -29,16 +29,9 @@ $result->output('console');
 
 ## Testing Result
 
-    PHPUnit 3.6.7 by Sebastian Bergmann.
-    Configuration read from /Users/c9s/git/work/SimpleBench/phpunit.xml
-    
-    .
-                         Rate     task1     task2     task3
-         task1           1M/s        --      241%      408%
-         task2         686K/s      -41%        --      169%
-         task3         405K/s      -24%      -59%        --
-    
-    
-    Time: 0 seconds, Memory: 5.25Mb
-    
-    OK (1 test, 3 assertions)
+                     Rate     Mem     task1     task2     task3
+     task1           1M/s    272M        --      -60%      -34%
+     task2         697K/s    272M      166%        --      -56%
+     task3         394K/s    272M      293%      176%        --
+
+
