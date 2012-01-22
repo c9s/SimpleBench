@@ -20,8 +20,10 @@ class Console
 
         // print column labels
         printf( "\n" );
-        printf( "% 10s" , "" );
-        printf( "% 15s" , "Rate" );
+        printf( "% 10s" , "" ); // for label names
+        printf( "% 15s" , "Rate" ); // for rate
+        printf( "% 8s" , "Mem" ); // for memory
+
         foreach( $names as $name1 ) {
             $task1 = $this->tasks[ $name1 ];
             printf( "% 10s" , $name1 );
@@ -43,6 +45,10 @@ class Console
             else {
                 printf("% 15s", (int)( $task1->rate ) . '/s');
             }
+
+
+            printf("% 8s", ( $task1->endMem - $task1->startMem ) . 'M');
+
 
             foreach( $names as $name2 ) {
                 $percent = $this->matrix[ $name1 ][ $name2 ];
