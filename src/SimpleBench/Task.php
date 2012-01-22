@@ -10,6 +10,9 @@ class Task
     public $count;
     public $rate;
 
+    public $startMem;
+    public $endMem;
+
     public function __construct( $name )
     {
         $this->name = $name;
@@ -19,6 +22,7 @@ class Task
     public function start()
     {
         $this->start = microtime( true );
+        $this->startMem = memory_get_usage();
     }
 
     public function end()
@@ -26,6 +30,7 @@ class Task
         $this->end = microtime( true );
         $this->duration = $this->getDuration();
         $this->rate = $this->count / $this->duration;
+        $this->endMem = memory_get_usage();
     }
 
     public function getDuration() 
