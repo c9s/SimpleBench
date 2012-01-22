@@ -23,10 +23,8 @@ usleep(600);
 $bench->end('task3');
 
 $result = $bench->compare($task1,$task2,$task3);
+$result->output('console');
 ```
-
-
-
 
 
 ## Testing Result

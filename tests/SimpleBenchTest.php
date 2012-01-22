@@ -25,7 +25,7 @@ class SimpleBenchTest extends PHPUnit_Framework_TestCase
         ok( $task3 );
 
         $result = $bench->compare($task1,$task2,$task3);
-        
+        $result->output('console');
     }
 }
 
