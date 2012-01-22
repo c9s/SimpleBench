@@ -4,7 +4,7 @@
  *
  *   $tasks = array();
  *
- *   $timer = new TaskTimer;
+ *   $timer = new SimpleBench\Task;
  *   $timer->start('task name');
  *
  *   $tasks[] = $timer->end('task name');
@@ -13,27 +13,28 @@
  *
  * Comparision:
  *
- *   $bench = new SimpleBenchmark;
+ *   $bench = new SimpleBench;
  *   $benchResult = $bench->compare( $task1 , $task2 , $task3 );
  *   $benchResult->toXml();
  *   $benchResult->toJson();
  *   $benchResult->toGraph();
  *
  */
-class BenchTimer 
+class SimpleBench 
 {
     public $tasks = array();
     public $stacks = array();
 
     public function start( $taskname = 'default' )
     {
-        $task = new BenchTimer\Task( $taskname );
+        $task = new SimpleBench\Task( $taskname );
         $this->stacks[] = $task;
 
         if( isset( $this->tasks[ $taskname ] ) ) {
             throw Exception("Task $taskname is already defined.");
         }
         $this->tasks[ $taskname ] = $task;
+        $task->start();
     }
 
     public function end($taskname = 'default')
@@ -43,9 +44,15 @@ class BenchTimer
         return $task;
     }
 
+    public function getTasks()
+    {
+        return $this->tasks;
+    }
+
     public function compare()
     {
-        $args = func_get_args();
+        $tasks = func_get_args();
+
 
     }
 

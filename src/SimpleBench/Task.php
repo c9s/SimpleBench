@@ -1,5 +1,5 @@
 <?php
-namespace BenchTimer;
+namespace SimpleBench;
 
 class Task
 {
@@ -7,10 +7,17 @@ class Task
     public $start;
     public $end;
     public $duration;
+    public $count;
+    public $rate;
 
     public function __construct( $name )
     {
         $this->name = $name;
+        $this->count = 1;
+    }
+
+    public function start()
+    {
         $this->start = microtime( true );
     }
 
@@ -18,6 +25,7 @@ class Task
     {
         $this->end = microtime( true );
         $this->duration = $this->getDuration();
+        $this->rate = $this->duration / $this->count;
     }
 
     public function getDuration() 
@@ -27,8 +35,14 @@ class Task
 
     public function printReport()
     {
-        if( $this->name )
-            echo "Task: {$this->name} ";
-        echo "Duration: " . ($this->end - $this->start) . " sec.\n";
+        echo "Task: {$this->name} \n";
+        echo "=> Duration: " . ($this->duration) . " sec.\n";
+        echo "=> Rate: " . $this->rate . " per sec.\n";
     }
+
+    public function setCount($count)
+    {
+        $this->count = $count;
+    }
+
 }
