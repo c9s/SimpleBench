@@ -25,6 +25,15 @@ class SimpleBench
     public $tasks = array();
     public $stacks = array();
 
+    private $optionGc = false;
+
+    function __construct($options = array())
+    {
+        if( isset($options['gc']) )
+            $this->optionGc = $options['gc'];
+
+    }
+
     public function start( $taskname = 'default' )
     {
         $task = new SimpleBench\Task( $taskname );
@@ -42,6 +51,9 @@ class SimpleBench
     {
         $task = $this->tasks[ $taskname ];
         $task->end();
+
+        if( $this->optionGc )
+            gc_collect_cycles();
         return $task;
     }
 
