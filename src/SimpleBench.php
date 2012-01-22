@@ -29,6 +29,12 @@ class SimpleBench
 
     function __construct($options = array())
     {
+
+        /**
+         * @see http://www.php.net/manual/en/features.gc.collecting-cycles.php
+         * @see http://php.net/manual/en/features.gc.collecting-cycles.php
+         * @see http://www.php.net/manual/en/function.gc-collect-cycles.php
+         */
         if( isset($options['gc']) )
             $this->optionGc = $options['gc'];
 
