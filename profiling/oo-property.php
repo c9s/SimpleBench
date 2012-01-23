@@ -1,6 +1,10 @@
 <?php
 require( 'tests/bootstrap.php');
 
+/**
+ * @see http://www.garfieldtech.com/blog/magic-benchmarks
+ */
+
 class TestGetSet 
 {
   public $foo = 1;
