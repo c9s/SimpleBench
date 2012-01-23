@@ -25,7 +25,7 @@ $invoice = array (
 $foo = array( 'foo' => 1 , 'bar' => array( 'zoo' => 1 ) );
 
 $bench = new SimpleBench;
-$bench->setN( 60000 );
+$bench->setN( 30000 );
 
 $bench->iterate( 'json_encode' , '' , function() use ($invoice) {
     return json_encode($invoice);

@@ -32,6 +32,46 @@ class Console
         echo "CPU Brand String: " , $info['cpu.brand_string'] , "\n";
     }
 
+
+    public function outputBarChart()
+    {
+        echo "Bar Chart\n\n";
+
+        $names = $this->ordering;
+
+        $columnLength = array();
+        $maxLength = 0;
+        $maxRate = 0;
+        foreach( $names as $n ) {
+            $task = $this->tasks[ $n ];
+            $columnLength[ $n ] = strlen( $n ) + 1;
+            if( strlen($n) > $maxLength )
+                $maxLength = strlen($n);
+            if( $task->rate > $maxRate )
+                $maxRate = $task->rate;
+        }
+
+        foreach( $names as $name1 ) {
+            $task1 = $this->tasks[ $name1 ];
+            printf( "  % ".$maxLength."s" , $name1 );
+
+            $rate = $task1->rate;
+            printf("% 8s", Utils::pretty_rate( $rate ));
+
+            echo " | ";
+
+            $r = ($rate / $maxRate);
+            $chars = (int) (69 * $r);
+            echo str_repeat( '=' , $chars - 1 );
+            echo ">";
+            echo str_repeat( ' ' , 69 - $chars );
+            echo " |";
+            echo "\n";
+        }
+
+    }
+
+
     public function output()
     {
         ob_start();
@@ -80,6 +120,7 @@ class Console
             printf("\n");
         }
 
+        $this->outputBarChart();
         $this->outputSystemInfo();
 
         $content = ob_get_contents();
