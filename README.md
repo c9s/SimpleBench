@@ -27,6 +27,19 @@ $result->output('console');
 ```
 
 
+
+```php
+<?php
+
+$bench->iterate( 'spl' , 3000 , function() {
+    
+});
+
+
+
+```
+
+
 ## Testing Result
 
 
@@ -36,3 +49,5 @@ $result->output('console');
        array[]           1M/s     44M        --         -29%
     array_push         381K/s     45M      341%           --
     
+
+

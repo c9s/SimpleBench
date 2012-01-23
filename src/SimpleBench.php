@@ -71,13 +71,13 @@ class SimpleBench
      */
     public function iterate( $taskName, $times , Closure $callback )
     {
-        $this->start( $taskName );
+        $task = $this->start( $taskName );
         for( $i = 0 ; $i < $times;  $i++ ) {
             $callback();
         }
         $this->end( $taskName );
+        return $task;
     }
-
 
 
     /**
