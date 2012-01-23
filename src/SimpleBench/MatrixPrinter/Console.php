@@ -7,6 +7,7 @@ class Console
 {
     public $matrix;
     public $ordering;
+    public $tasks;
 
     /**
      * comparison matrix object

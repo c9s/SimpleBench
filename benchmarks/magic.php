@@ -51,4 +51,5 @@ $bench->iterate( 'method' , 'testing normal method call' , function() use ($test
 });
 
 $result = $bench->compare();
-echo $result->output('console');
+echo $result->output('Console');
+$result->output('EzcGraph');

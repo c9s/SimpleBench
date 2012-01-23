@@ -21,6 +21,7 @@ class ComparisonMatrix
         $this->tasks[ $task->name ] = $task;
     }
 
+
     public function compare()
     {
         // generate comparison result
@@ -31,7 +32,7 @@ class ComparisonMatrix
             return $a->duration > $b->duration ? 1 : -1;
         });
 
-        $names = array_map(function($item){ 
+        $this->ordering = $names = array_map(function($item){ 
             return $item->name;
             },$tasksByDuration);
 
@@ -63,6 +64,22 @@ class ComparisonMatrix
         $this->ordering = $names;
         $this->info = $this->aggregateSystemInfo();
         return $matrix;
+    }
+
+    public function getRateList()
+    {
+        $data = array(
+            'tasks' => array()
+        );
+        $maxRate = 0;
+        foreach( $this->ordering as $n ) {
+            $task = $this->tasks[ $n ];
+            $data['tasks'][ $n ] = $task->rate;
+            if( $task->rate > $maxRate )
+                $maxRate = $task->rate;
+        }
+        $data['max_rate'] = $maxRate;
+        return $data;
     }
 
 
