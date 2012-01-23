@@ -61,6 +61,7 @@ class ComparisonMatrix
         }
         $this->matrix = $matrix;
         $this->ordering = $names;
+        $this->info = $this->aggregateSystemInfo();
         return $matrix;
     }
 
@@ -73,7 +74,7 @@ class ComparisonMatrix
         $infoClass = '\\SimpleBench\\SystemInfo\\' . PHP_OS;
         spl_autoload_call( $infoClass );
         if( class_exists($infoClass) )
-            $this->info = $infoClass::getInfo();
+            return $infoClass::getInfo();
     }
 
 

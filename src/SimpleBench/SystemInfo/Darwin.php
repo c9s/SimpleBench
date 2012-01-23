@@ -1,6 +1,6 @@
 <?php
-
 namespace SimpleBench\SystemInfo;
+use SimpleBench\Utils;
 
 class Darwin
 {
@@ -29,8 +29,9 @@ class Darwin
 
                 $ sysctl -n machdep.cpu.brand_string
                 $ system_profiler | grep Processor
-
-         */
+        */
+        $info['vm_stat'] = Utils::execute('vm_stat')->stdout;
+        $info['cpu.brand_string'] = Utils::execute('sysctl -n machdep.cpu.brand_string')->stdout;
 
         // get memory information
         return $info;

@@ -22,6 +22,16 @@ class Console
     }
 
 
+    public function outputSystemInfo()
+    {
+        $info = $this->cMatrix->info;
+
+        echo "\n\n";
+        echo "--- System Information ---\n";
+        echo "PHP Version: " , $info['php_version'] , "\n";
+        echo "CPU Brand String: " , $info['cpu.brand_string'] , "\n";
+    }
+
     public function output()
     {
         ob_start();
@@ -69,6 +79,8 @@ class Console
             }
             printf("\n");
         }
+
+        $this->outputSystemInfo();
 
         $content = ob_get_contents();
         ob_end_clean();
