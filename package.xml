@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.4.10" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0        http://pear.php.net/dtd/tasks-1.0.xsd        http://pear.php.net/dtd/package-2.0        http://pear.php.net/dtd/package-2.0.xsd">
+  <name>SimpleBench</name>
+  <channel>pear.corneltek.com</channel>
+  <summary>benchmarking tool</summary>
+  <description>Simple PHP benchmarking tools</description>
+  <lead>
+    <name>Yo-An Lin</name>
+    <user/>
+    <email>cornelius.howl@gmail.com</email>
+    <active>yes</active>
+  </lead>
+  <date>2012-01-23</date>
+  <time>06:36:04</time>
+  <version>
+    <release>0.0.1</release>
+    <api>0.0.1</api>
+  </version>
+  <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+  </stability>
+  <license>PHP</license>
+  <notes>-</notes>
+  <contents>
+    <dir name="/">
+      <file name="tests/SimpleBenchTest.php" role="test" md5sum="a63d801162976c21857f6f7d6d03855c"/>
+      <file name="tests/bootstrap.php" role="test" md5sum="bca4c6cc10a138d0e22e365098c174d0"/>
+      <file name="tests/helpers.php" role="test" md5sum="aae3a65fac318e1871de47062f2e4096"/>
+      <file name="src/SimpleBench/ComparisonMatrix.php" role="php" md5sum="92a8f75e4933935b82d051b3b547d1c2"/>
+      <file name="src/SimpleBench/MatrixFormat/Console.php" role="php" md5sum="2adf289ba81a912b233c98e7702456da"/>
+      <file name="src/SimpleBench/Task.php" role="php" md5sum="bd197a1ca873b1e020c3b8dc69aa151f"/>
+      <file name="src/SimpleBench.php" role="php" md5sum="cfb1bac5e650df685e3639ba8277389f"/>
+    </dir>
+  </contents>
+  <dependencies>
+    <required>
+      <php>
+        <min>5.3</min>
+      </php>
+      <pearinstaller>
+        <min>1.4</min>
+      </pearinstaller>
+      <package>
+        <name>Universal</name>
+        <channel>pear.corneltek.com</channel>
+      </package>
+    </required>
+  </dependencies>
+  <phprelease>
+    <filelist>
+      <install name="tests/SimpleBenchTest.php" as="SimpleBenchTest.php"/>
+      <install name="tests/bootstrap.php" as="bootstrap.php"/>
+      <install name="tests/helpers.php" as="helpers.php"/>
+      <install name="src/SimpleBench/ComparisonMatrix.php" as="SimpleBench/ComparisonMatrix.php"/>
+      <install name="src/SimpleBench/MatrixFormat/Console.php" as="SimpleBench/MatrixFormat/Console.php"/>
+      <install name="src/SimpleBench/Task.php" as="SimpleBench/Task.php"/>
+      <install name="src/SimpleBench.php" as="SimpleBench.php"/>
+    </filelist>
+  </phprelease>
+</package>
