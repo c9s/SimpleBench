@@ -67,7 +67,7 @@ class ComparisonMatrix
     {
         $class = '\SimpleBench\MatrixFormat\\' . ucfirst($format);
         $outputer = new $class( $this->tasks, $this->matrix , $this->ordering );
-        $outputer->output();
+        return $outputer->output();
     }
 
 }

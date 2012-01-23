@@ -6,15 +6,16 @@ class Console
     public $matrix;
     public $ordering;
 
-    function __construct($tasks,$matrix,$ordering)
+    public function __construct($tasks,$matrix,$ordering)
     {
         $this->tasks = $tasks;
         $this->matrix = $matrix;
         $this->ordering = $ordering;
     }
 
-    function output()
+    public function output()
     {
+        ob_start();
         /* matrix console printer */
         $names = $this->ordering;
 
@@ -76,6 +77,9 @@ class Console
             printf("\n");
         }
 
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
     }
 
 }

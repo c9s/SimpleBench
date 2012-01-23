@@ -23,4 +23,4 @@ for( $i = 0 ; $i < $size ; $i++ ) {
 $t = $bench->end('array[]');
 
 $result = $bench->compare();
-$result->output('console');
+echo $result->output('console');

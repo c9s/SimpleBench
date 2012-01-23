@@ -26,6 +26,7 @@ class SimpleBench
     public $stacks = array();
 
     private $optionGc = false;
+    private $info;
 
     function __construct($options = array())
     {
@@ -37,9 +38,38 @@ class SimpleBench
          */
         if( isset($options['gc']) )
             $this->optionGc = $options['gc'];
-
     }
 
+
+    /**
+     * Aggregate system information for different platform 
+     */
+    public function aggregateSystemInfo()
+    {
+        $infoClass = '\\SimpleBench\\SystemInfo\\' . PHP_OS;
+        spl_autoload_call( $infoClass );
+        if( class_exists($infoClass) )
+            $this->info = $infoClass::getInfo();
+    }
+
+    /**
+     * set use-case title
+     *
+     * @param string $title
+     *
+     */
+    public function setTitle($title)
+    {
+        return $this->title = $title;
+    }
+
+
+    /**
+     * start a task to test the benchmark of solution 
+     *
+     * @param string $taskname 
+     * @return SimpleBench\Task
+     */
     public function start( $taskname = 'default' )
     {
         $task = new SimpleBench\Task( $taskname );
@@ -53,6 +83,13 @@ class SimpleBench
         return $task;
     }
 
+
+    /**
+     * end up a task
+     *
+     * @param string $taskname
+     * @return SimpleBench\Task
+     */
     public function end($taskname = 'default')
     {
         $task = $this->tasks[ $taskname ];
@@ -64,11 +101,23 @@ class SimpleBench
         return $task;
     }
 
+    /**
+     * get all tasks
+     *
+     * @return SimpleBench\Task[]
+     */
     public function getTasks()
     {
         return $this->tasks;
     }
 
+
+    /**
+     * compare tasks
+     *
+     * @param SimpleBench\Task ...
+     * @return SimpleBench\ComparisonMatrix
+     */
     public function compare()
     {
         $tasks = func_get_args();
