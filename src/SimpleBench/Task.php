@@ -3,14 +3,54 @@ namespace SimpleBench;
 
 class Task
 {
+
+    /**
+     * @var string task name
+     */
     public $name;
+
+
+    /**
+     * @var string task description
+     */
+    public $desc;
+
+
+
+    /**
+     * @var integer start time (micro-seconds)
+     */
     public $start;
+
+    /**
+     * @var integer end time (micro-seconds)
+     */
     public $end;
+
+    /**
+     * @var integer duration time (micro-seconds)
+     */
     public $duration;
+
+    /**
+     * @var integer iteration count
+     */
     public $count;
+
+    /**
+     * @var integer rate 
+     */
     public $rate;
 
+
+    /**
+     * @var integer start up memory usage (bytes)
+     */
     public $startMem;
+
+    /**
+     * @var integer end up memory usage (bytes)
+     */
     public $endMem;
 
     public function __construct( $name )
