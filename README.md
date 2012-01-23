@@ -5,7 +5,7 @@ SimpleBench provides suckless benchmark tools.
 
 ## Screenshots
 
-![Console](static/bar_chart.png)
+![Console](https://github.com/c9s/SimpleBench/raw/master/static/bar_chart.png)
 
 ## Install
 
