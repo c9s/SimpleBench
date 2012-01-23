@@ -64,6 +64,22 @@ class SimpleBench
     }
 
 
+
+    /**
+     * Iterating helper
+     *
+     */
+    public function iterate( $taskName, $times , Closure $callback )
+    {
+        $this->start( $taskName );
+        for( $i = 0 ; $i < $times;  $i++ ) {
+            $callback();
+        }
+        $this->end( $taskName );
+    }
+
+
+
     /**
      * start a task to test the benchmark of solution 
      *
