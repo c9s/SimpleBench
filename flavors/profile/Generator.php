@@ -13,7 +13,7 @@ class Generator extends BaseGenerator
 
     function generate($name) 
     {
-        $this->render( 'profile.php.twig' , 'profiling/' . $name . '.php', array( 
+        $this->render( 'profile.php.twig' , 'benchmarks/' . $name . '.php', array( 
             'name' => $name,
         ));
     }
