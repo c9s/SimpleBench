@@ -39,5 +39,9 @@ $bench->iterate( 'syck_dump' , '' , function() use ($invoice) {
     return syck_dump($invoice);
 });
 
+$bench->iterate( 'serialize' , '' , function() use ($invoice) {
+    return serialize($invoice);
+});
+
 $result = $bench->compare();
 echo $result->output('console');
