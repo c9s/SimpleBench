@@ -82,4 +82,11 @@ Array push `$array[] = 1;` vs `array_push( $array , 1 );` :
     array_push         381K/s     45M      341%           --
     
 
+json\_encode, yaml\_emit, syck\_dump:
 
+    n=60000
+    
+                         Rate     Mem   json_en   yaml_emit   syck_dump
+       json_en          64K/s      0B        --        -20%        -15%
+     yaml_emit          13K/s      0B      478%          --        -72%
+     syck_dump           9K/s      0B      659%        137%          --
