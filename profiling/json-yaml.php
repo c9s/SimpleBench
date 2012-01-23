@@ -31,16 +31,21 @@ $bench->iterate( 'json_en' , '' , function() use ($invoice) {
     return json_encode($invoice);
 });
 
+
+$bench->iterate( 'serialize' , '' , function() use ($invoice) {
+    return serialize($invoice);
+});
+
+$bench->iterate( 'bson_encode' , '' , function() use ($invoice) {
+    return bson_encode($invoice);
+});
+
 $bench->iterate( 'yaml_emit' , '' , function() use ($invoice) {
     return yaml_emit($invoice);
 });
 
 $bench->iterate( 'syck_dump' , '' , function() use ($invoice) {
     return syck_dump($invoice);
-});
-
-$bench->iterate( 'serialize' , '' , function() use ($invoice) {
-    return serialize($invoice);
 });
 
 $result = $bench->compare();
