@@ -27,6 +27,7 @@ class SimpleBench
 
     private $optionGc = false;
     private $info;
+    private $n = 1;
 
     function __construct($options = array())
     {
@@ -38,6 +39,13 @@ class SimpleBench
          */
         if( isset($options['gc']) )
             $this->optionGc = $options['gc'];
+
+    }
+
+    public function setN($n)
+    {
+        echo "n=$n\n";
+        $this->n = $n;
     }
 
 
@@ -69,13 +77,13 @@ class SimpleBench
      * Iterating helper
      *
      */
-    public function iterate( $taskName,  $desc, $times, Closure $callback )
+    public function iterate( $taskName,  $desc, Closure $callback )
     {
         $task = $this->create( $taskName );
         $task->setDesc( $desc );
-        $task->setCount( $times );
+        $task->setCount( $this->n );
         $task->start();
-        for( $i = 0 ; $i < $times;  $i++ ) {
+        for( $i = 0 ; $i < $this->n;  $i++ ) {
             $callback();
         }
         $task->end();
