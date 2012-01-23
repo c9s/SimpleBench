@@ -93,7 +93,7 @@ class Console
         $columnLength = array();
         $maxLength = 0;
         foreach( $names as $n ) {
-            $columnLength[ $n ] = strlen( $n ) + 1;
+            $columnLength[ $n ] = strlen( $n ) + 2;
             if( strlen($n) > $maxLength )
                 $maxLength = strlen($n);
         }
@@ -102,7 +102,7 @@ class Console
         printf( "\n" );
         printf( "% {$maxLength}s" , "" ); // for label names
         printf( "% 8s" , "Rate" ); // for rate
-        printf( "% 7s" , "Mem" ); // for memory
+        printf( "% 6s" , "Mem" ); // for memory
 
         foreach( $names as $name1 ) {
             $task1 = $this->tasks[ $name1 ];
@@ -117,7 +117,7 @@ class Console
             $rate = $task1->rate;
             printf("% 8s", Utils::pretty_rate( $rate ));
 
-            printf("% 7s", Utils::pretty_size( $task1->mem ) );
+            printf("% 6s", Utils::pretty_size( $task1->mem ) );
 
             foreach( $names as $name2 ) {
                 $w = $columnLength[$name2];
