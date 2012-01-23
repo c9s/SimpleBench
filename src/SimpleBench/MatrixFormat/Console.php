@@ -1,6 +1,8 @@
 <?php
-
 namespace SimpleBench\MatrixFormat;
+
+use SimpleBench\Utils;
+
 class Console
 {
     public $matrix;
@@ -18,31 +20,6 @@ class Console
         $this->matrix = $cMatrix->matrix;
         $this->ordering = $cMatrix->ordering;
     }
-
-
-    public function prettySize($bytes)
-    {
-        if( $bytes > 1000000 ) {
-            return (int)( $bytes / 1000000 ) . 'M';
-        }
-        elseif( $bytes > 1000 ) {
-            return (int)( $bytes / 1000 ) . 'K';
-        }
-        return (int) ($bytes) . 'B';
-    }
-
-    public function prettyRate($rate)
-    {
-        if( $rate > 1000000 ) {
-            return (int)( $rate / 1000000 ) . 'M/s';
-        }
-        elseif( $rate > 1000 ) {
-            return (int)( $rate / 1000 ) . 'K/s';
-        }
-        return (int)( $rate ) . '/s';
-    }
-
-
 
 
     public function output()
@@ -74,9 +51,9 @@ class Console
             $task1 = $this->tasks[ $name1 ];
 
             $rate = $task1->rate;
-            printf("% 15s", $this->prettyRate( $rate ));
+            printf("% 15s", Utils::pretty_rate( $rate ));
 
-            printf("% 8s", $this->prettySize( $task1->mem / 1000000 ) );
+            printf("% 8s", Utils::pretty_size( $task1->mem / 1000000 ) );
 
             foreach( $names as $name2 ) {
                 $w = $columnLength[$name2];
