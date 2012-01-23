@@ -6,12 +6,44 @@ class Console
     public $matrix;
     public $ordering;
 
-    public function __construct($tasks,$matrix,$ordering)
+    /**
+     * comparison matrix object
+     */
+    public $cMatrix;
+
+    public function __construct($cMatrix)
     {
-        $this->tasks = $tasks;
-        $this->matrix = $matrix;
-        $this->ordering = $ordering;
+        $this->cMatrix = $cMatrix;
+        $this->tasks = $cMatrix->tasks;
+        $this->matrix = $cMatrix->matrix;
+        $this->ordering = $cMatrix->ordering;
     }
+
+
+    public function prettySize($bytes)
+    {
+        if( $bytes > 1000000 ) {
+            return (int)( $bytes / 1000000 ) . 'M';
+        }
+        elseif( $bytes > 1000 ) {
+            return (int)( $bytes / 1000 ) . 'K';
+        }
+        return (int) ($bytes) . 'B';
+    }
+
+    public function prettyRate($rate)
+    {
+        if( $rate > 1000000 ) {
+            return (int)( $rate / 1000000 ) . 'M/s';
+        }
+        elseif( $rate > 1000 ) {
+            return (int)( $rate / 1000 ) . 'K/s';
+        }
+        return (int)( $rate ) . '/s';
+    }
+
+
+
 
     public function output()
     {
@@ -42,27 +74,9 @@ class Console
             $task1 = $this->tasks[ $name1 ];
 
             $rate = $task1->rate;
+            printf("% 15s", $this->prettyRate( $rate ));
 
-            if( $rate > 1000000 ) {
-                printf("% 15s", (int)( $task1->rate / 1000000 ) . 'M/s');
-            }
-            elseif( $rate > 1000 ) {
-                printf("% 15s", (int)( $task1->rate / 1000 ) . 'K/s');
-            }
-            else {
-                printf("% 15s", (int)( $task1->rate ) . '/s');
-            }
-
-
-            if( $task1->mem > 1000000 ) {
-                printf("% 8s", (int)( $task1->mem / 1000000 ) . 'M');
-            }
-            elseif( $task1->mem > 1000 ) {
-                printf("% 8s", (int)( $task1->mem / 1000 ) . 'K');
-            }
-            else {
-                printf("% 8s", (int)( $task1->mem ) . 'B');
-            }
+            printf("% 8s", $this->prettySize( $task1->mem / 1000000 ) );
 
             foreach( $names as $name2 ) {
                 $w = $columnLength[$name2];

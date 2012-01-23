@@ -7,6 +7,7 @@ class ComparisonMatrix
     public $tasks = array();
     public $matrix = array();
     public $ordering = array();
+    public $info;
 
     function __construct($tasks = array() )
     {
@@ -63,10 +64,23 @@ class ComparisonMatrix
         return $matrix;
     }
 
-    function output( $format )
+
+    /**
+     * Aggregate system information for different platform 
+     */
+    public function aggregateSystemInfo()
+    {
+        $infoClass = '\\SimpleBench\\SystemInfo\\' . PHP_OS;
+        spl_autoload_call( $infoClass );
+        if( class_exists($infoClass) )
+            $this->info = $infoClass::getInfo();
+    }
+
+
+    public function output( $format )
     {
         $class = '\SimpleBench\MatrixFormat\\' . ucfirst($format);
-        $outputer = new $class( $this->tasks, $this->matrix , $this->ordering );
+        $outputer = new $class($this);
         return $outputer->output();
     }
 

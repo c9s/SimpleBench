@@ -26,7 +26,6 @@ class SimpleBench
     public $stacks = array();
 
     private $optionGc = false;
-    private $info;
     private $n = 1;
 
     function __construct($options = array())
@@ -48,17 +47,6 @@ class SimpleBench
         $this->n = $n;
     }
 
-
-    /**
-     * Aggregate system information for different platform 
-     */
-    public function aggregateSystemInfo()
-    {
-        $infoClass = '\\SimpleBench\\SystemInfo\\' . PHP_OS;
-        spl_autoload_call( $infoClass );
-        if( class_exists($infoClass) )
-            $this->info = $infoClass::getInfo();
-    }
 
     /**
      * set use-case title
