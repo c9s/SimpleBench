@@ -3,6 +3,12 @@ SimpleBench
 
 SimpleBench provides suckless benchmark tools.
 
+## Install
+
+    $ git clone .....
+    $ onion -d bundle
+    $ php profiling/magic.php
+
 ## API
 
 ```php
