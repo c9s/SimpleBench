@@ -25,11 +25,11 @@ function foo($v)
 $bench = new SimpleBench;
 $bench->setN( 50000 );
 
-$bench->iterate( 'func' , 'direct function call' , function() {
+$bench->iterate( 'function' , 'direct function call' , function() {
     foo(1);
 });
 
-$bench->iterate( 'sfunc' , 'static function call' , function() {
+$bench->iterate( 'static method' , 'static method call' , function() {
     TestCall2::foo(1);
 });
 

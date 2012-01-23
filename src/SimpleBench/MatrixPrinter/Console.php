@@ -26,16 +26,26 @@ class Console
     {
         $info = $this->cMatrix->info;
 
-        echo "\n\n";
-        echo "--- System Information ---\n";
+        $this->printTitle('System Information');
+
         echo "PHP Version: " , $info['php_version'] , "\n";
         echo "CPU Brand String: " , $info['cpu.brand_string'] , "\n";
     }
 
+    public function printTitle($title)
+    {
+        $rest = (int) (78 - strlen($title)) / 2;
+
+        echo "\n\n";
+        echo str_repeat( '=' , $rest );
+        echo ' ' , $title , ' ';
+        echo str_repeat( '=' , $rest );
+        echo "\n\n";
+    }
 
     public function outputBarChart()
     {
-        echo "Bar Chart\n\n";
+        $this->printTitle('Bar Chart');
 
         $names = $this->ordering;
 
@@ -61,11 +71,13 @@ class Console
             echo " | ";
 
             $r = ($rate / $maxRate);
-            $chars = (int) (69 * $r);
-            echo str_repeat( '=' , $chars - 1 );
-            echo ">";
-            echo str_repeat( ' ' , 69 - $chars );
-            echo " |";
+            $w = 60;
+            $chars = (int) ($w * $r);
+            echo str_repeat( '█' , $chars );
+            # echo str_repeat( '=' , $chars - 1 );
+            # echo ">";
+            echo str_repeat( ' ' , $w - $chars );
+            echo "  |";
             echo "\n";
         }
 
