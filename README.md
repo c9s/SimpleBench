@@ -3,11 +3,16 @@ SimpleBench
 
 SimpleBench provides suckless benchmark tools.
 
+## Screenshots
+
+![Console](static/bar_chart.png)
+
 ## Install
 
     $ git clone .....
     $ onion -d bundle
     $ php profiling/magic.php
+
 
 ## API
 
