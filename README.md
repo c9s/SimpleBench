@@ -28,6 +28,7 @@ echo $result->output('console');
 
 
 ```php
+<?php
 $bench = new SimpleBench;
 $task1 = $bench->start('task1');
 $task1->setCount(300); // 300 requests
@@ -48,18 +49,6 @@ $result = $bench->compare($task1,$task2,$task3);
 $result->output('console');
 ```
 
-
-
-```php
-<?php
-
-$bench->iterate( 'spl' , 3000 , function() {
-    
-});
-
-
-
-```
 
 
 ## Testing Result
