@@ -28,17 +28,19 @@ class Console
         /* matrix console printer */
         $names = $this->ordering;
 
-
         $columnLength = array();
+        $maxLength = 0;
         foreach( $names as $n ) {
-            $columnLength[ $n ] = strlen( $n ) + 3;
+            $columnLength[ $n ] = strlen( $n ) + 1;
+            if( strlen($n) > $maxLength )
+                $maxLength = strlen($n);
         }
 
         // print column labels
         printf( "\n" );
-        printf( "% 10s" , "" ); // for label names
-        printf( "% 15s" , "Rate" ); // for rate
-        printf( "% 8s" , "Mem" ); // for memory
+        printf( "% {$maxLength}s" , "" ); // for label names
+        printf( "% 8s" , "Rate" ); // for rate
+        printf( "% 7s" , "Mem" ); // for memory
 
         foreach( $names as $name1 ) {
             $task1 = $this->tasks[ $name1 ];
@@ -47,13 +49,13 @@ class Console
         printf("\n");
 
         foreach( $names as $name1 ) {
-            printf("% 10s",$name1);
+            printf("% {$maxLength}s",$name1);
             $task1 = $this->tasks[ $name1 ];
 
             $rate = $task1->rate;
-            printf("% 15s", Utils::pretty_rate( $rate ));
+            printf("% 8s", Utils::pretty_rate( $rate ));
 
-            printf("% 8s", Utils::pretty_size( $task1->mem / 1000000 ) );
+            printf("% 7s", Utils::pretty_size( $task1->mem ) );
 
             foreach( $names as $name2 ) {
                 $w = $columnLength[$name2];
