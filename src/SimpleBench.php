@@ -81,6 +81,22 @@ class SimpleBench
 
 
     /**
+     * create a task, but doest start
+     *
+     * @param string $taskName
+     */
+    public function create($taskName)
+    {
+        $task = new SimpleBench\Task( $taskname );
+        $this->stacks[] = $task;
+        if( isset( $this->tasks[ $taskname ] ) ) {
+            throw Exception("Task $taskname is already defined.");
+        }
+        $this->tasks[ $taskname ] = $task;
+        return $task;
+    }
+
+    /**
      * start a task to test the benchmark of solution 
      *
      * @param string $taskname 
@@ -88,13 +104,7 @@ class SimpleBench
      */
     public function start( $taskname = 'default' )
     {
-        $task = new SimpleBench\Task( $taskname );
-        $this->stacks[] = $task;
-
-        if( isset( $this->tasks[ $taskname ] ) ) {
-            throw Exception("Task $taskname is already defined.");
-        }
-        $this->tasks[ $taskname ] = $task;
+        $task = $this->create( $taskName );
         $task->start();
         return $task;
     }
