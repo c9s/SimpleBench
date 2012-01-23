@@ -5,8 +5,8 @@ SimpleBench provides suckless benchmark tools.
 
 ## API
 
-
 ```php
+<?php
 $bench = new SimpleBench;
 $bench->setN( 50000 );
 
