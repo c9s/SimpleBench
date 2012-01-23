@@ -69,12 +69,17 @@ class SimpleBench
     {
         $task = $this->create( $taskName );
         $task->setDesc( $desc );
+
+        echo "Runing $taskName - $desc. ";
+
         $task->setCount( $this->n );
         $task->start();
         for( $i = 0 ; $i < $this->n;  $i++ ) {
             $callback();
         }
         $task->end();
+
+        echo $task->rate . "/s\n";
         return $task;
     }
 
