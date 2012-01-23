@@ -42,6 +42,21 @@ $bench->iterate( 'spl' , 3000 , function() {
 
 ## Testing Result
 
+Function call, Method call, Static method call:
+
+    -SimpleBench (master) % php profiling/magic.php
+    n=30000
+    
+                         Rate     Mem   func   sfunc   method   cuf   cufa   __call
+          func         233K/s      0B     --    -87%     -80%  -59%   -55%     -49%
+         sfunc         203K/s      0B   114%      --     -92%  -68%   -63%     -56%
+        method         187K/s      0B   124%    108%       --  -74%   -68%     -61%
+           cuf         139K/s      0B   166%    145%     134%    --   -92%     -82%
+          cufa         128K/s      0B   181%    158%     145%  108%     --     -89%
+        __call         115K/s      0B   201%    176%     162%  120%   111%       --
+    
+
+Array push `$array[] = 1;` vs `array_push( $array , 1 );` :
 
         -SimpleBench (master) % php profiling/array-push.php 
     

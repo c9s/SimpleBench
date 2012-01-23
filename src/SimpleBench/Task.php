@@ -81,15 +81,22 @@ class Task
 
     public function printReport()
     {
-        echo "Task: {$this->name} \n";
-        echo "=> Duration: " . ($this->duration) . " sec.\n";
-        echo "=> Rate: " . $this->rate . "/s.\n";
-        echo "=> Memory: " . $this->mem . "B.\n";
+        echo "{$this->name} \n";
+        if( $this->desc )
+            echo "\t=> Description: " . $this->desc . "\n";
+        echo "\t=> Duration: " . ($this->duration) . " sec.\n";
+        echo "\t=> Rate: " . $this->rate . "/s.\n";
+        echo "\t=> Memory: " . $this->mem . "B.\n";
     }
 
     public function setCount($count)
     {
         $this->count = $count;
+    }
+
+    public function setDesc($desc)
+    {
+        $this->desc = $desc;
     }
 
     public function getData()

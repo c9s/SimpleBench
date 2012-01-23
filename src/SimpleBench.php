@@ -69,13 +69,16 @@ class SimpleBench
      * Iterating helper
      *
      */
-    public function iterate( $taskName, $times , Closure $callback )
+    public function iterate( $taskName,  $desc, $times, Closure $callback )
     {
-        $task = $this->start( $taskName );
+        $task = $this->create( $taskName );
+        $task->setDesc( $desc );
+        $task->setCount( $times );
+        $task->start();
         for( $i = 0 ; $i < $times;  $i++ ) {
             $callback();
         }
-        $this->end( $taskName );
+        $task->end();
         return $task;
     }
 
@@ -85,7 +88,7 @@ class SimpleBench
      *
      * @param string $taskName
      */
-    public function create($taskName)
+    public function create($taskname)
     {
         $task = new SimpleBench\Task( $taskname );
         $this->stacks[] = $task;
@@ -104,7 +107,7 @@ class SimpleBench
      */
     public function start( $taskname = 'default' )
     {
-        $task = $this->create( $taskName );
+        $task = $this->create( $taskname );
         $task->start();
         return $task;
     }
