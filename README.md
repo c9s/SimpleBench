@@ -5,6 +5,28 @@ SimpleBench provides suckless benchmark tools.
 
 ## API
 
+
+```php
+$bench = new SimpleBench;
+$bench->setN( 50000 );
+
+$bench->iterate( 'func' , 'direct function call' , function() {
+    foo(1);
+});
+
+$bench->iterate( 'sfunc' , 'static function call' , function() {
+    TestCall2::foo(1);
+});
+
+$bench->iterate( 'method' , 'testing normal method call' , function() use ($testCall) {
+    $testCall->normal(1);
+});
+
+$result = $bench->compare();
+echo $result->output('console');
+```
+
+
 ```php
 $bench = new SimpleBench;
 $task1 = $bench->start('task1');
