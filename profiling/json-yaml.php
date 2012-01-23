@@ -27,8 +27,13 @@ $foo = array( 'foo' => 1 , 'bar' => array( 'zoo' => 1 ) );
 $bench = new SimpleBench;
 $bench->setN( 60000 );
 
-$bench->iterate( 'json_en' , '' , function() use ($invoice) {
+$bench->iterate( 'json_encode' , '' , function() use ($invoice) {
     return json_encode($invoice);
+});
+
+$jsonString = json_encode($invoice);
+$bench->iterate( 'json_decode' , '' , function() use ($jsonString) {
+    return json_decode($jsonString);
 });
 
 
@@ -38,6 +43,11 @@ $bench->iterate( 'serialize' , '' , function() use ($invoice) {
 
 $bench->iterate( 'bson_encode' , '' , function() use ($invoice) {
     return bson_encode($invoice);
+});
+
+$bsonString = bson_encode($invoice);
+$bench->iterate( 'bson_decode' , '' , function() use ($bsonString) {
+    return bson_decode($bsonString);
 });
 
 $bench->iterate( 'yaml_emit' , '' , function() use ($invoice) {
