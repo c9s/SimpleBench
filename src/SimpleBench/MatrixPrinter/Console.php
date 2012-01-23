@@ -1,5 +1,5 @@
 <?php
-namespace SimpleBench\MatrixFormat;
+namespace SimpleBench\MatrixPrinter;
 
 use SimpleBench\Utils;
 

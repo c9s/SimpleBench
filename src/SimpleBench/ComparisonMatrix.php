@@ -79,7 +79,7 @@ class ComparisonMatrix
 
     public function output( $format )
     {
-        $class = '\SimpleBench\MatrixFormat\\' . ucfirst($format);
+        $class = '\SimpleBench\MatrixPrinter\\' . ucfirst($format);
         $outputer = new $class($this);
         return $outputer->output();
     }
