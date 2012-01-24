@@ -26,7 +26,8 @@ class SimpleBench
     public $stacks = array();
 
     private $optionGc = false;
-    private $n = 1;
+    public $n = 1;
+    public $title;
 
     function __construct($options = array())
     {
