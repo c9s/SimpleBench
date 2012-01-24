@@ -13,6 +13,12 @@ SimpleBench provides suckless benchmark tools.
 <img height="200" src="https://github.com/c9s/SimpleBench/raw/master/static/console.png"/>
 </a>
 
+
+## Requirement
+
+* ezcGraph
+* ezcConsoleTools
+
 ## Install
 
     $ git clone .....

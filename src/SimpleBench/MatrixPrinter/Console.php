@@ -94,7 +94,7 @@ class Console
         $columnLength = array();
         $maxLength = 0;
         foreach( $names as $n ) {
-            $columnLength[ $n ] = strlen( $n ) + 2;
+            $columnLength[ $n ] = strlen( $n ) + 1;
             if( strlen($n) > $maxLength )
                 $maxLength = strlen($n);
         }
