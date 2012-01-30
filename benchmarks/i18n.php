@@ -26,9 +26,9 @@ $bench->iterate( 'gettext' , 'gettext' , function() {
 $hash = array(
     'en' => array( 'Hello World' => 'Hello World' ),
 );
-
 $bench->iterate( 'array' , 'array' , function() use($hash) {
-    $hash['en']['Hello World'];
+    if( isset($hash['en']['Hello World']) )
+        return $hash['en']['Hello World'];
 });
 
 $result = $bench->compare();
