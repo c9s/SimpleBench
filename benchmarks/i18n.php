@@ -14,6 +14,10 @@ function apc_loc($msg)
     return $trans;
 }
 
+$bench->iterate( 'apc_fetch', 'apc_fetch' , function() {
+    return apc_fetch( 'i18n_' . 'Hello World' );
+});
+
 $bench->iterate( 'apc_loc' , 'loc' , function() {
     apc_loc('Hello World');
 });
