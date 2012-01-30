@@ -35,8 +35,5 @@ $bench->iterate( 'redis(get)' , 'redis get' , function() use ($redis) {
     $redis->get( '___a' );
 });
 
-
-
-
 $result = $bench->compare();
 echo $result->output('console');
