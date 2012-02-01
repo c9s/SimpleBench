@@ -50,6 +50,14 @@ $bench->iterate( 'get' , 'get' , function() use ($testCall) {
     $val = $testCall->getFoo();
 });
 
+$bench->iterate( '= ->foo' , '->foo' , function() use ($testCall) {
+    $val = $testCall->foo;
+});
+
+$bench->iterate( '->foo = ' , '->foo' , function() use ($testCall) {
+    $testCall->foo = 123;
+});
+
 $result = $bench->compare();
 echo $result->output('Console');
 # $result->output('EzcGraph');
