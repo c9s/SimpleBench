@@ -1,37 +1,91 @@
 <?php
 require( 'tests/bootstrap.php');
 
-interface TestInterface { 
-    function get();
+
+class TestCase1
+{
+
 }
 
-class Test { 
-    function foo() {  }
+class TestCase2
+{
+    public $a1;
+    public $a2;
+    public $a3;
+    public $a4;
+
+    public function test1() {
+        return 'test';
+    }
+    public function test2() {
+        return 'test';
+    }
+    public function test3() {
+        return 'test';
+    }
+    public function test4() {
+        return 'test';
+    }
 }
 
-class Test2 extends Test { 
-    function foo() {  }
-    function bar() {  }
-}
+class TestCase3
+{
+    public $a1;
+    public $a2;
+    public $a3;
+    public $a4;
 
-class Test3 implements TestInterface { 
-    function get() {  }
+    public function test1() { }
+    public function test2() { }
+    public function test3() { }
+    public function test4() { }
+    public function test5() { }
+    public function test6() { }
+    public function test7() { }
+    public function test8() { }
+    public function test9() { }
+    public function test10() { }
+    public function test11() { }
+    public function test12() { }
+    public function test13() {
+        return 'test';
+    }
+    public function test14() { 
+        return 'test';
+    }
+    public function test15() {
+        return 'test';
+    }
+    public function test16() {
+        return 'test';
+    }
+    public function test17() {
+        return 'test';
+    }
+    public function test18() {
+        return 'test';
+    }
+    public function test19() {
+        return 'test';
+    }
+    public function test20() { 
+        return 'test';
+    }
 }
 
 
 $bench = new SimpleBench;
-$bench->setN( 60000 );
-
-$bench->iterate( 'obj' , 'normal object contstruction' , function() {
-    return new Test;
+$bench->setN( 100000 );
+$bench->iterate( 'case1' , 'no methods, no properties' , function() {
+    $t = new TestCase1;
 });
 
-$bench->iterate( 'extends' , 'object with inheritance' , function() {
-    return new Test2;
+$bench->iterate( 'case2' , '4 methods, 4 properties' , function() {
+    $t = new TestCase2;
 });
 
-$bench->iterate( 'interface' , 'object with interface' , function() {
-    return new Test3;
+$bench->iterate( 'case3' , '20 methods, 4 properties' , function() {
+    $t = new TestCase3;
 });
 
 $result = $bench->compare();
