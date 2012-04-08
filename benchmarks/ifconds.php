@@ -2,7 +2,7 @@
 require( 'tests/bootstrap.php');
 
 $bench = new SimpleBench;
-$bench->setN( 50000 );
+$bench->setN( 500000 );
 $bench->setTitle( '' );
 
 function getValue()
