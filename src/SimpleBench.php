@@ -95,7 +95,7 @@ class SimpleBench
         $task = new SimpleBench\Task( $taskname );
         $this->stacks[] = $task;
         if( isset( $this->tasks[ $taskname ] ) ) {
-            throw Exception("Task $taskname is already defined.");
+            throw new Exception("Task $taskname is already defined.");
         }
         $this->tasks[ $taskname ] = $task;
         return $task;

@@ -10,6 +10,18 @@ function getValue()
     return true;
 }
 
+$bench->iterate( 'string ==' , 'string ==' , function() {
+    if( 'string' == getValue() ) {
+
+    }
+});
+
+$bench->iterate( 'string ===' , 'string ===' , function() {
+    if( 'string' === getValue() ) {
+
+    }
+});
+
 $bench->iterate( '=== null' , '=== null' , function() {
     if( null === getValue() ) {
     }
