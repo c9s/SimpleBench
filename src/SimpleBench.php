@@ -69,7 +69,7 @@ class SimpleBench
     public function iterate( $taskName, Closure $callback )
     {
         $task = $this->create( $taskName );
-        $task->setDesc( $desc );
+        $task->desc( $desc );
 
         echo "Runing $taskName - $desc. ";
 
