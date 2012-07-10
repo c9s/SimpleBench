@@ -89,12 +89,12 @@ class Task
         echo "\t=> Memory: " . $this->mem . "B.\n";
     }
 
-    public function setCount($count)
+    public function count($count)
     {
         $this->count = $count;
     }
 
-    public function setDesc($desc)
+    public function desc($desc)
     {
         $this->desc = $desc;
     }

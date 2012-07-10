@@ -54,17 +54,17 @@ echo $result->output('console');
 <?php
 $bench = new SimpleBench;
 $task1 = $bench->start('task1');
-$task1->setCount(300); // 300 requests
+$task1->count(300); // 300 requests
 usleep(100);
 $bench->end('task1');
 
 $task2 = $bench->start('task2');
-$task2->setCount(300); // 300 requests
+$task2->count(300); // 300 requests
 usleep(300);
 $bench->end('task2');
 
 $task3 = $bench->start('task3');
-$task3->setCount(300); // 300 requests
+$task3->count(300); // 300 requests
 usleep(600);
 $bench->end('task3');
 

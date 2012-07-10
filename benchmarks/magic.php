@@ -4,6 +4,9 @@ require( 'tests/bootstrap.php');
 class TestCall {
   function normal($v) { return 1; }
   function __call($method, $args) { return 1; }
+  function __get($name) {
+      return $name;
+  }
 }
 $testCall = new TestCall();
 
@@ -34,12 +37,17 @@ $bench->iterate( 'static method' , 'static method call' , function() {
 });
 
 
-$bench->iterate( 'cuf' , 'testing call_user_func' , function() {
+$bench->iterate( 'call_user_func' , 'testing call_user_func' , function() {
     call_user_func('foo',1);
 });
 
-$bench->iterate( 'cufa' , 'testing call_user_func_array' , function() {
+$bench->iterate( 'call_user_func_array' , 'testing call_user_func_array' , function() {
     call_user_func_array('foo',array(1));
+});
+
+
+$bench->iterate( '__get' , 'testing __get' , function() use ($testCall) {
+    $testCall->foo;
 });
 
 $bench->iterate( '__call' , 'testing __call with object' , function() use ($testCall) {

@@ -66,14 +66,14 @@ class SimpleBench
      * Iterating helper
      *
      */
-    public function iterate( $taskName,  $desc, Closure $callback )
+    public function iterate( $taskName, Closure $callback )
     {
         $task = $this->create( $taskName );
         $task->setDesc( $desc );
 
         echo "Runing $taskName - $desc. ";
 
-        $task->setCount( $this->n );
+        $task->count( $this->n );
         $task->start();
         for( $i = 0 ; $i < $this->n;  $i++ ) {
             $callback();
