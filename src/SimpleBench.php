@@ -69,6 +69,7 @@ class SimpleBench
     public function iterate( $taskName, $arg1 = null , $arg2 = null )
     {
         $callback = null;
+        $desc = null;
         if( $arg1 && $arg2 ) {
             $desc = $arg1;
             $callback = $arg2;
