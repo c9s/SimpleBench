@@ -35,7 +35,7 @@ class Task
     /**
      * @var integer iteration count
      */
-    public $count;
+    public $count = 1;
 
     /**
      * @var integer rate 
