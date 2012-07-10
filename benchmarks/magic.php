@@ -28,33 +28,33 @@ function foo($v)
 $bench = new SimpleBench;
 $bench->setN( 50000 );
 
-$bench->iterate( 'function' , 'direct function call' , function() {
+$bench->iterate( 'function' , function() {
     foo(1);
 });
 
-$bench->iterate( 'static method' , 'static method call' , function() {
+$bench->iterate( 'static::method' , function() {
     TestCall2::foo(1);
 });
 
 
-$bench->iterate( 'call_user_func' , 'testing call_user_func' , function() {
+$bench->iterate( 'call_user_func' , function() {
     call_user_func('foo',1);
 });
 
-$bench->iterate( 'call_user_func_array' , 'testing call_user_func_array' , function() {
+$bench->iterate( 'call_user_func_array' , function() {
     call_user_func_array('foo',array(1));
 });
 
 
-$bench->iterate( '__get' , 'testing __get' , function() use ($testCall) {
+$bench->iterate( '__get' , function() use ($testCall) {
     $testCall->foo;
 });
 
-$bench->iterate( '__call' , 'testing __call with object' , function() use ($testCall) {
+$bench->iterate( '__call' , function() use ($testCall) {
     $testCall->notExists(1);
 });
 
-$bench->iterate( 'method' , 'testing normal method call' , function() use ($testCall) {
+$bench->iterate( 'method' , function() use ($testCall) {
     $testCall->normal(1);
 });
 
