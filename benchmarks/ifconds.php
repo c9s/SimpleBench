@@ -10,47 +10,47 @@ function getValue()
     return true;
 }
 
-$bench->iterate( 'string ==' , 'string ==' , function() {
+$bench->iterate( 'string ==' , function() {
     if( 'string' == getValue() ) {
 
     }
 });
 
-$bench->iterate( 'string ===' , 'string ===' , function() {
+$bench->iterate( 'string ===' , function() {
     if( 'string' === getValue() ) {
 
     }
 });
 
-$bench->iterate( '=== null' , '=== null' , function() {
+$bench->iterate( '=== null' , function() {
     if( null === getValue() ) {
     }
 });
 
-$bench->iterate( 'is_null' , 'is_null' , function() {
+$bench->iterate( 'is_null' , function() {
     if( is_null(getValue()) ) {
     }
 });
 
-$bench->iterate( '!' , '!' , function() {
+$bench->iterate( '!', function() {
     if( ! getValue() ) {
     }
 });
 
-$bench->iterate( '=== false' , 'false' , function() {
+$bench->iterate( '=== false' , function() {
     if( false === getValue() ) {
 
     }
 });
 
-$bench->iterate( 'boolean context' , 'boolean context' , function() {
+$bench->iterate( 'boolean context', function() {
     if ( getValue() ) {
 
     }
 });
 
 
-$bench->iterate( 'boolean === boolean' , 'boolean context' , function() {
+$bench->iterate( 'boolean === boolean' , function() {
     if ( true === getValue() ) {
 
     }

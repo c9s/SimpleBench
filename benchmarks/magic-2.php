@@ -34,27 +34,27 @@ $testCall = new TestCall();
 $bench = new SimpleBench;
 $bench->setN( 50000 );
 
-$bench->iterate( '__set' , 'magic set' , function() use ($testCall) {
+$bench->iterate( '__set' , function() use ($testCall) {
     $testCall->foo = 123;
 });
 
-$bench->iterate( 'set' , 'set' , function() use ($testCall) {
+$bench->iterate( 'user-setter' , function() use ($testCall) {
     $testCall->setFoo(123);
 });
 
-$bench->iterate( '__get' , 'magic get' , function() use ($testCall) {
+$bench->iterate( '__get' , function() use ($testCall) {
     $val = $testCall->foo;
 });
 
-$bench->iterate( 'get' , 'get' , function() use ($testCall) {
+$bench->iterate( 'user-getter' , function() use ($testCall) {
     $val = $testCall->getFoo();
 });
 
-$bench->iterate( '= ->foo' , '->foo' , function() use ($testCall) {
+$bench->iterate( '= ->foo' , function() use ($testCall) {
     $val = $testCall->foo;
 });
 
-$bench->iterate( '->foo = ' , '->foo' , function() use ($testCall) {
+$bench->iterate( '->foo = ' , function() use ($testCall) {
     $testCall->foo = 123;
 });
 

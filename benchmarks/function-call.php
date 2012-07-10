@@ -18,15 +18,15 @@ function foo3()
 $bench = new SimpleBench;
 $bench->setN( 100000 );
 
-$bench->iterate( 'func1' , 'direct function call' , function() {
+$bench->iterate( 'func1' , function() {
     foo1();
 });
 
-$bench->iterate( 'func2' , 'direct function call' , function() {
+$bench->iterate( 'func2' , function() {
     foo2();
 });
 
-$bench->iterate( 'func3' , 'direct function call' , function() {
+$bench->iterate( 'func3' , function() {
     foo3();
 });
 

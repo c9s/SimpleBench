@@ -42,7 +42,7 @@ $bench = new SimpleBench;
 $bench->setN( 50000 );
 $bench->title( 'iterator' );
 
-$bench->iterate( 'func' , 'direct function call' , function() {
+$bench->iterate( 'func' , function() {
 
 });
 

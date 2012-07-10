@@ -14,15 +14,15 @@ function apc_loc($msg)
     return $trans;
 }
 
-$bench->iterate( 'apc_fetch', 'apc_fetch' , function() {
+$bench->iterate( 'apc_fetch', function() {
     return apc_fetch( 'i18n_' . 'Hello World' );
 });
 
-$bench->iterate( 'apc_loc' , 'loc' , function() {
+$bench->iterate( 'apc_loc' , function() {
     apc_loc('Hello World');
 });
 
-$bench->iterate( 'gettext' , 'gettext' , function() {
+$bench->iterate( 'gettext' , function() {
     _('Hello World');
 });
 
@@ -30,7 +30,7 @@ $bench->iterate( 'gettext' , 'gettext' , function() {
 $hash = array(
     'en' => array( 'Hello World' => 'Hello World' ),
 );
-$bench->iterate( 'simple array' , 'array' , function() use($hash) {
+$bench->iterate( 'simple array' , function() use($hash) {
     if( isset($hash['en']['Hello World']) )
         return $hash['en']['Hello World'];
 });
