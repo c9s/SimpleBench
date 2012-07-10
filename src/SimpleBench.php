@@ -66,8 +66,18 @@ class SimpleBench
      * Iterating helper
      *
      */
-    public function iterate( $taskName, Closure $callback )
+    public function iterate( $taskName, $arg1 = null , $arg2 = null )
     {
+        $callback = null;
+        if( $arg1 && $arg2 ) {
+            $desc = $arg1;
+            $callback = $arg2;
+        } elseif( $arg1 ) {
+            $callback = $arg1;
+        } else {
+            throw new Exception('Require a callback function');
+        }
+
         $task = $this->create( $taskName );
         $task->desc( $desc );
 
@@ -76,7 +86,7 @@ class SimpleBench
         $task->count( $this->n );
         $task->start();
         for( $i = 0 ; $i < $this->n;  $i++ ) {
-            $callback();
+            call_user_func($callback);
         }
         $task->end();
 

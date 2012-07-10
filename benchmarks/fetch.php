@@ -5,11 +5,11 @@ $bench = new SimpleBench;
 $bench->setN( 5 );
 $bench->title( 'Fetch' );
 
-$bench->iterate( 'file' , 'file_get_contents' , function() {
+$bench->iterate( 'file_get_contents' , function() {
     file_get_contents("http://www.php.net/");
 });
 
-$bench->iterate( 'curl' , 'curl' , function() {
+$bench->iterate( 'curl' , function() {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "http://www.php.net/");
     curl_setopt($ch, CURLOPT_HEADER, false );
@@ -18,7 +18,7 @@ $bench->iterate( 'curl' , 'curl' , function() {
     curl_close($ch);
 });
 
-$bench->iterate( 'fsock' , 'fsocket' , function() {
+$bench->iterate( 'fsocket' , function() {
     $fp = fsockopen("www.php.net", 80, $errno, $errstr, 30);
     if (!$fp) {
         echo "$errstr ($errno)<br />\n";

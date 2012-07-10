@@ -26,18 +26,18 @@ class A implements ArrayAccess
 }
 
 $a = range(1,10000);
-$bench->iterate( 'count' , 'count()' , function() use ($a) {
+$bench->iterate( 'count()', function() use ($a) {
     $b = count($a);
 });
 
-$bench->iterate( 'static count' , 'static count()' , function() use ($a) {
+$bench->iterate( 'static count()' , function() use ($a) {
     static $b;
     $b = count($a);
 });
 
 
 $aa = new A;
-$bench->iterate( 'array_access' , 'ArrayAccess' , function() use ($aa) {
+$bench->iterate( 'ArrayAccess' , function() use ($aa) {
     $b = count($aa);
 });
 
