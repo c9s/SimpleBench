@@ -3,7 +3,7 @@ require( 'tests/bootstrap.php');
 
 $bench = new SimpleBench;
 $bench->setN( 50000 );
-$bench->setTitle( 'array merge' );
+$bench->title( 'array merge' );
 
 $arr1 = array( 'a' => 1 );
 $arr2 = array( 'b' => 2 , 'c' => 3 );

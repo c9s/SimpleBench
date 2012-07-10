@@ -3,7 +3,7 @@ require( 'tests/bootstrap.php');
 
 $bench = new SimpleBench;
 $bench->setN(1);
-$bench->setTitle( 'array key filter and mapping' );
+$bench->title( 'array key filter and mapping' );
 
 function foo($v) { 
     return $v+1; 

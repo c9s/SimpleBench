@@ -3,7 +3,7 @@ require( 'tests/bootstrap.php');
 
 $bench = new SimpleBench;
 $bench->setN( 50000 );
-$bench->setTitle( '{{ title }}' );
+$bench->title( '{{ title }}' );
 
 $bench->iterate( 'func' , 'direct function call' , function() {
 

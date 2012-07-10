@@ -3,7 +3,7 @@ require( 'tests/bootstrap.php');
 
 $bench = new SimpleBench;
 $bench->setN( 5 );
-$bench->setTitle( 'Fetch' );
+$bench->title( 'Fetch' );
 
 $bench->iterate( 'file' , 'file_get_contents' , function() {
     file_get_contents("http://www.php.net/");

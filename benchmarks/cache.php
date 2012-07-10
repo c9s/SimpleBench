@@ -3,7 +3,7 @@ require( 'tests/bootstrap.php');
 
 $bench = new SimpleBench;
 $bench->setN( 50000 );
-$bench->setTitle( 'Cache' );
+$bench->title( 'Cache' );
 
 $bench->iterate( 'apc(set)' , 'apc_store' , function() {
     apc_store('___a',123,100);

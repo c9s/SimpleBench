@@ -3,7 +3,7 @@ require( 'tests/bootstrap.php');
 
 $bench = new SimpleBench;
 $bench->setN( 50000 );
-$bench->setTitle( 'sprintf test' );
+$bench->title( 'sprintf test' );
 
 $bench->iterate( 'sprintf' , 'sprintf' , function() {
     $foo = 'Foo';

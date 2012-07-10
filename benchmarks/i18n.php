@@ -3,7 +3,7 @@ require( 'tests/bootstrap.php');
 
 $bench = new SimpleBench;
 $bench->setN( 50000 );
-$bench->setTitle( 'i18n' );
+$bench->title( 'i18n' );
 
 function apc_loc($msg)
 {

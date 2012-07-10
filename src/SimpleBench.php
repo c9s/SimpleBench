@@ -55,7 +55,7 @@ class SimpleBench
      * @param string $title
      *
      */
-    public function setTitle($title)
+    public function title($title)
     {
         return $this->title = $title;
     }
@@ -107,9 +107,11 @@ class SimpleBench
      * @param string $taskname 
      * @return SimpleBench\Task
      */
-    public function start( $taskname = 'default' )
+    public function start( $taskname = 'default' , $desc = null )
     {
         $task = $this->create( $taskname );
+        if( $desc )
+            $task->desc( $desc );
         $task->start();
         return $task;
     }

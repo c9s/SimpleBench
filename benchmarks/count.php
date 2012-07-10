@@ -3,7 +3,7 @@ require( 'tests/bootstrap.php');
 
 $bench = new SimpleBench;
 $bench->setN( 50000 );
-$bench->setTitle( 'Array count' );
+$bench->title( 'Array count' );
 
 class A implements ArrayAccess
 {

@@ -40,7 +40,7 @@ foreach ($external as $item);
 
 $bench = new SimpleBench;
 $bench->setN( 50000 );
-$bench->setTitle( 'iterator' );
+$bench->title( 'iterator' );
 
 $bench->iterate( 'func' , 'direct function call' , function() {
 
