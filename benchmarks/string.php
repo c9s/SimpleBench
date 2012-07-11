@@ -6,7 +6,8 @@ $bench->n = 60000;
 $bench->title  = 'String';
 
 
-$bench->iterate( 'concat' , 'string concat' , function() {
+$bench->iterate( 'q_with_concat' , 'string concat' , function() {
+    $int = 4;
     return 'select ' .
 		'ca.id as id,' . 
 		'ca.start_time as start_time,' . 
@@ -17,26 +18,11 @@ $bench->iterate( 'concat' , 'string concat' , function() {
 	' where ' . 
 		'ca.course_id = :course' . ' and ' .
 		'pa.id = ca.paid_id' . ' and ' .
-		'pa.state != 4' . ' and ' .
+		'pa.state != ' . $int . ' and ' .
 		'ca.date = :date';
 });
 
-$bench->iterate( 'qq' , 'string without concat' , function() {
-    return "select 
-		ca.id as id,
-		ca.start_time as start_time,
-		ca.end_time as end_time
-	from 
-		equipment_courseappointment as ca,
-		equipment_patientappointment as pa
-	where 
-		ca.course_id = :course  and 
-		pa.id = ca.paid_id and 
-		pa.state != 4' . ' and 
-		ca.date = :date";
-});
-
-$bench->iterate( 'qq_intp' , 'string without concat' , function() {
+$bench->iterate( 'qq_with_concat' , 'double quotes string without concat' , function() {
     $int = 4;
     return "select 
 		ca.id as id,
@@ -48,11 +34,27 @@ $bench->iterate( 'qq_intp' , 'string without concat' , function() {
 	where 
 		ca.course_id = :course  and 
 		pa.id = ca.paid_id and 
-		pa.state != $int' . ' and 
+		pa.state != " . $int . " and 
 		ca.date = :date";
 });
 
-$bench->iterate( 'non_concat' , 'string without concat' , function() {
+$bench->iterate( 'qq_interpolation' , 'string without concat' , function() {
+    $int = 4;
+    return "select 
+		ca.id as id,
+		ca.start_time as start_time,
+		ca.end_time as end_time
+	from 
+		equipment_courseappointment as ca,
+		equipment_patientappointment as pa
+	where 
+		ca.course_id = :course  and 
+		pa.id = ca.paid_id and 
+		pa.state != $int and 
+		ca.date = :date";
+});
+
+$bench->iterate( 'q' , 'string without concat' , function() {
     return 'select 
 		ca.id as id,
 		ca.start_time as start_time,
@@ -63,7 +65,7 @@ $bench->iterate( 'non_concat' , 'string without concat' , function() {
 	where 
 		ca.course_id = :course  and 
 		pa.id = ca.paid_id and 
-		pa.state != 4' . ' and 
+		pa.state != $int and 
 		ca.date = :date';
 });
 
