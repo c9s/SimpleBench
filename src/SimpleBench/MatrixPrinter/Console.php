@@ -31,8 +31,8 @@ class Console
 
         echo "PHP Version: " , $info['php_version'] , "\n";
         echo "CPU Brand String: " , $info['cpu.brand_string'] , "\n";
-        if( isset($info['xdebug']) ) {
-            echo "With XDebug Extension: " , $info['xdebug'] , "\n";
+        if( isset($info['xdebug']) && $info['xdebug'] ) {
+            echo "With XDebug Extension.\n";
         }
     }
 
