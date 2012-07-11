@@ -33,6 +33,8 @@ class Darwin
         $info['vm_stat'] = Utils::execute('vm_stat')->stdout;
         $info['cpu.brand_string'] = Utils::execute('sysctl -n machdep.cpu.brand_string')->stdout;
 
+        $info['xdebug'] = extension_loaded('xdebug');
+
         // get memory information
         return $info;
     }
