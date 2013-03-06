@@ -2,7 +2,7 @@
 require( 'tests/bootstrap.php');
 
 $bench = new SimpleBench;
-$bench->n = 60000;
+$bench->n = 100000;
 $bench->title  = 'String';
 
 
