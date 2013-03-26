@@ -41,9 +41,21 @@ $bench->iterate( 'serialize' , function() use ($invoice) {
     return serialize($invoice);
 });
 
-$bench->iterate( 'bson_encode' , function() use ($invoice) {
-    return bson_encode($invoice);
+$str = serialize($invoice);
+$bench->iterate( 'unserialize' ,  function() use ($str) {
+    return unserialize($str);
 });
+
+
+if ( extension_loaded('mongo') ) {
+    $bench->iterate( 'bson_encode' , function() use ($invoice) {
+        return bson_encode($invoice);
+    });
+    $bsonString = bson_encode($invoice);
+    $bench->iterate( 'bson_decode' , function() use ($bsonString) {
+        return bson_decode($bsonString);
+    });
+}
 
 if( extension_loaded('msgpack') ) {
     $bench->iterate( 'msgpack_serialize' , function() use ($invoice) {
@@ -62,14 +74,11 @@ if( extension_loaded('igbinary') ) {
     });
 }
 
-$bsonString = bson_encode($invoice);
-$bench->iterate( 'bson_decode' , function() use ($bsonString) {
-    return bson_decode($bsonString);
-});
-
-$bench->iterate( 'yaml_emit' , function() use ($invoice) {
-    return yaml_emit($invoice);
-});
+if ( extension_loaded('yaml') ) {
+    $bench->iterate( 'yaml_emit' , function() use ($invoice) {
+        return yaml_emit($invoice);
+    });
+}
 
 if( extension_loaded('syck') ) {
     $bench->iterate( 'syck_dump' , function() use ($invoice) {
