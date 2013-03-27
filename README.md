@@ -5,12 +5,12 @@ SimpleBench provides suckless benchmark tools.
 
 ## Screenshots
 
-<a href="https://raw.github.com/c9s/php-SimpleBench/raw/master/static/bar_chart.png">
-<img height="200" src="https://raw.github.com/c9s/php-SimpleBench/raw/master/static/bar_chart.png"/>
+<a href="https://raw.github.com/c9s/php-SimpleBench/master/static/bar_chart.png">
+<img height="200" src="https://raw.github.com/c9s/php-SimpleBench/master/static/bar_chart.png"/>
 </a>
 
-<a href="https://raw.github.com/c9s/php-SimpleBench/raw/master/static/console.png">
-<img height="200" src="https://raw.github.com/c9s/php-SimpleBench/raw/master/static/console.png"/>
+<a href="https://raw.github.com/c9s/php-SimpleBench/master/static/console.png">
+<img height="200" src="https://raw.github.com/c9s/php-SimpleBench/master/static/console.png"/>
 </a>
 
 
