@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.4.10" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0        http://pear.php.net/dtd/tasks-1.0.xsd        http://pear.php.net/dtd/package-2.0        http://pear.php.net/dtd/package-2.0.xsd">
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.4.10" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0               http://pear.php.net/dtd/tasks-1.0.xsd               http://pear.php.net/dtd/package-2.0               http://pear.php.net/dtd/package-2.0.xsd">
   <name>SimpleBench</name>
   <channel>pear.corneltek.com</channel>
   <summary>benchmarking tool</summary>
@@ -10,8 +10,8 @@
     <email>cornelius.howl@gmail.com</email>
     <active>yes</active>
   </lead>
-  <date>2012-02-27</date>
-  <time>23:40:41</time>
+  <date>2014-01-07</date>
+  <time>22:04:46</time>
   <version>
     <release>0.0.2</release>
     <api>0.0.2</api>
@@ -24,18 +24,15 @@
   <notes>-</notes>
   <contents>
     <dir name="/">
-      <file name="tests/bootstrap.php" role="test" md5sum="80ef9c374c1ea9d4164416f9f33b7ec6"/>
-      <file name="tests/helpers.php" role="test" md5sum="aae3a65fac318e1871de47062f2e4096"/>
-      <file name="tests/SimpleBenchTest.php" role="test" md5sum="a63d801162976c21857f6f7d6d03855c"/>
       <file name="src/SimpleBench/ComparisonMatrix.php" role="php" md5sum="3c683be5e5cea35a66aec11ee5d5c226"/>
-      <file name="src/SimpleBench/MatrixPrinter/Console.php" role="php" md5sum="27c9d542012860e977b00b08ad98c317"/>
+      <file name="src/SimpleBench/MatrixPrinter/Console.php" role="php" md5sum="464730bf3fd4c81192dffdda19002509"/>
       <file name="src/SimpleBench/MatrixPrinter/EzcGraph.php" role="php" md5sum="f7180873765ce87eb2d830743beea486"/>
       <file name="src/SimpleBench/MatrixWriter/JsonWriter.php" role="php" md5sum="1e728493941c573a0982d47e31e7807d"/>
       <file name="src/SimpleBench/MatrixWriter/Writer.php" role="php" md5sum="3c01e7d98e5d5cf1ba599f3b4d19b398"/>
-      <file name="src/SimpleBench/SystemInfo/Darwin.php" role="php" md5sum="8eda4c5623a3324a2e2fcd9a12503bf1"/>
-      <file name="src/SimpleBench/Task.php" role="php" md5sum="29c7a26b77054a33e0bbec0b4830a7d1"/>
-      <file name="src/SimpleBench/Utils.php" role="php" md5sum="8f12a7a3cd4f752cb140e62e0d76b6d4"/>
-      <file name="src/SimpleBench.php" role="php" md5sum="6f93501f6abe40acdd7f70d30beabcda"/>
+      <file name="src/SimpleBench/SystemInfo/Darwin.php" role="php" md5sum="971662d193eb0bf0811c5e7300cfa8ea"/>
+      <file name="src/SimpleBench/Task.php" role="php" md5sum="97f20ab69af1a50e0fdeac7632023ec9"/>
+      <file name="src/SimpleBench/Utils.php" role="php" md5sum="177cd0deffd3e00d1039b2907bca9ad5"/>
+      <file name="src/SimpleBench.php" role="php" md5sum="b6f5be725a88dfdc662bf3a5ec1c7dbe"/>
     </dir>
   </contents>
   <dependencies>
@@ -54,9 +51,6 @@
   </dependencies>
   <phprelease>
     <filelist>
-      <install name="tests/bootstrap.php" as="bootstrap.php"/>
-      <install name="tests/helpers.php" as="helpers.php"/>
-      <install name="tests/SimpleBenchTest.php" as="SimpleBenchTest.php"/>
       <install name="src/SimpleBench/ComparisonMatrix.php" as="SimpleBench/ComparisonMatrix.php"/>
       <install name="src/SimpleBench/MatrixPrinter/Console.php" as="SimpleBench/MatrixPrinter/Console.php"/>
       <install name="src/SimpleBench/MatrixPrinter/EzcGraph.php" as="SimpleBench/MatrixPrinter/EzcGraph.php"/>

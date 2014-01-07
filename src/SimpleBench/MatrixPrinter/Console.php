@@ -61,7 +61,7 @@ class Console
             $columnLength[ $n ] = strlen( $n ) + 1;
             if( strlen($n) > $maxLength )
                 $maxLength = strlen($n);
-            if( $task->rate > $maxRate )
+            if ( $task->rate > $maxRate )
                 $maxRate = $task->rate;
         }
 
@@ -70,7 +70,7 @@ class Console
             printf( "  % ".$maxLength."s" , $name1 );
 
             $rate = $task1->rate;
-            printf("% 8s", Utils::pretty_rate( $rate ));
+            printf("% 10s", Utils::pretty_rate( $rate ));
 
             echo " | ";
 
@@ -105,7 +105,7 @@ class Console
         // print column labels
         printf( "\n" );
         printf( "% {$maxLength}s" , "" ); // for label names
-        printf( "% 8s" , "Rate" ); // for rate
+        printf( "% 10s" , "Rate" ); // for rate
         printf( "% 6s" , "Mem" ); // for memory
 
         foreach( $names as $name1 ) {
@@ -119,7 +119,7 @@ class Console
             $task1 = $this->tasks[ $name1 ];
 
             $rate = $task1->rate;
-            printf("% 8s", Utils::pretty_rate( $rate ));
+            printf("% 10s", Utils::pretty_rate( $rate ));
 
             printf("% 6s", Utils::pretty_size( $task1->mem ) );
 

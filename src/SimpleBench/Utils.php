@@ -38,10 +38,12 @@ class Utils
 
     static function pretty_rate($rate)
     {
-        if( $rate > 1000 ) {
-            return round( $rate / 1000 ,2) . 'K/ms';
+        if( $rate > 1000 * 1000 ) {
+            return round( $rate / 1000 / 1000,2) . 'M/s';
+        } elseif( $rate > 1000 ) {
+            return round( $rate / 1000,2) . 'K/s';
         } else {
-            return round( $rate ,2 ) . '/ms';
+            return round( $rate ,2 ) . '/s';
         }
     }
 
